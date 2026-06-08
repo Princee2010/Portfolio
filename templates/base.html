@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Princee Portfolio{% endblock %}</title>
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+    <!-- CURSOR -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="{% url 'home' %}" class="nav-logo">
+          <span class="logo-bracket">&lt;</span>Princee<span class="logo-accent"
+            >/</span
+          ><span class="logo-bracket">&gt;</span>
+        </a>
+        <ul class="nav-links">
+          <li>
+            <a
+              href="{% url 'home' %}"
+              class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'about' %}"
+              class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'projects' %}"
+              class="nav-link {% if request.resolver_match.url_name == 'projects' %}active{% endif %}"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'contact' %}"
+              class="nav-link nav-cta {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
+              >Contact</a
+            >
+          </li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'projects' %}">Projects</a>
+        <a href="{% url 'contact' %}">Contact</a>
+      </div>
+    </nav>
+
+    <!-- MESSAGES -->
+    {% if messages %}
+    <div class="messages-container">
+      {% for msg in messages %}
+      <div class="alert alert-{{ msg.tags }}">{{ msg }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- MAIN CONTENT -->
+    <main>{% block content %}{% endblock %}</main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="footer-logo"
+            ><span class="logo-bracket">&lt;</span>Princee<span
+              class="logo-accent"
+              >/</span
+            ><span class="logo-bracket">&gt;</span></span
+          >
+          <p>
+            Passionate about Data Science & Web Development. Building solutions
+            that matter.
+          </p>
+          <div class="footer-socials">
+            <a
+              href="https://github.com/princee2010"
+              target="_blank"
+              class="social-link"
+              aria-label="GitHub"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.55v-1.92C6.03 21.04 5.37 19 5.37 19c-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.14 1.17A10.93 10.93 0 0 1 12 6.84c.97 0 1.95.13 2.86.38 2.18-1.48 3.14-1.17 3.14-1.17.62 1.58.23 2.75.11 3.04.73.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.07.78 2.15v3.19c0 .3.2.65.79.54A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://linkedin.com/princee
+bhingradiya-303ba5317"
+              target="_blank"
+              class="social-link"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.59 0 4.25 2.36 4.25 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"
+                />
+              </svg>
+            </a>
+            <a
+              href="mailto:princeebhingradiya20@email.com"
+              class="social-link"
+              aria-label="Email"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'projects' %}">Projects</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Interests</h4>
+          <ul>
+            <li><a href="#">Data Science</a></li>
+            <li><a href="#">Machine Learning</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Open Source</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact-info">
+          <h4>Get In Touch</h4>
+          <p>📍 Surat, Gujarat, India</p>
+          <p>📧 princeebhingradiya20@email.com</p>
+          <p>🕐 Available for freelance</p>
+          <a href="{% url 'contact' %}" class="footer-btn">Hire Me</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © 2025 <span class="logo-accent"> Princee Bhingradiya </span>. Built
+          with Django &amp; ❤️ in Surat.
+        </p>
+        <p class="footer-status">
+          <span class="status-dot"></span> Available for opportunities
+        </p>
+      </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

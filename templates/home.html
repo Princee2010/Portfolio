@@ -1,0 +1,305 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Home — Princee
+Portfolio{% endblock %} {% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag"><span class="tag-dot"></span> Open to work</div>
+    <h1 class="hero-title">
+      Hi, I'm <span class="name-highlight">Princee Bhingradiya</span><br />
+      <span class="hero-role" id="typedRole"></span>
+    </h1>
+    <p class="hero-sub">
+      I craft intelligent data-driven solutions and elegant web applications.
+      Passionate about turning raw data into insights and ideas into interfaces.
+    </p>
+    <div class="hero-actions">
+      <a href="{% url 'projects' %}" class="btn-primary">View My Work</a>
+      <a href="{% url 'contact' %}" class="btn-secondary">Let's Talk →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num" data-target="10">0</span><span>+</span>
+        <span class="stat-label">Projects</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-target="5">0</span><span>+</span>
+        <span class="stat-label">Languages</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" data-target="2">0</span><span>+</span>
+        <span class="stat-label">Years Learning</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="code-card">
+      <div class="code-header">
+        <span class="dot red"></span><span class="dot yellow"></span
+        ><span class="dot green"></span>
+        <span class="code-filename">portfolio.py</span>
+      </div>
+      <pre
+        class="code-body"
+      ><span class="c-kw">class</span> <span class="c-cls">Developer</span>:
+  <span class="c-kw">def</span> <span class="c-fn">__init__</span>(self):
+    self.name   = <span class="c-str">"Princee Bhingradiya"</span>
+    self.role   = <span class="c-str">"Data Scientist &amp;</span>
+                  <span class="c-str"> Web Dev"</span>
+    self.skills = [
+      <span class="c-str">"Python"</span>, <span class="c-str">"Django"</span>,
+      <span class="c-str">"ML"</span>, <span class="c-str">"SQL"</span>
+    ]
+    self.city   = <span class="c-str">"Surat, India"</span>
+
+  <span class="c-kw">def</span> <span class="c-fn">get_coffee</span>(self):
+    <span class="c-kw">return</span> <span class="c-str">"☕ Always"</span></pre>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- SKILLS SECTION -->
+<section class="section skills-section" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">What I Know</span>
+      <h2 class="section-title">Skills & Technologies</h2>
+      <p class="section-sub">
+        Technologies I work with daily and love building with
+      </p>
+    </div>
+
+
+<div class="skills-tabs">
+  <button class="tab-btn active" data-tab="languages">Languages</button>
+  <button class="tab-btn" data-tab="frontend">Frontend</button>
+  <button class="tab-btn" data-tab="backend">Backend</button>
+  <button class="tab-btn" data-tab="database">Database</button>
+  <button class="tab-btn" data-tab="datascience">Data Science</button>
+  <button class="tab-btn" data-tab="tools">Tools</button>
+</div>
+<!-- Languages -->
+<div class="skills-panel active" id="tab-languages">
+  <div class="skills-grid">
+    {% for skill in languages %}
+    <div class="skill-card">
+      <div class="skill-icon">{{ skill.icon|default:"💻" }}</div>
+      <div class="skill-info">
+        <span class="skill-name">{{ skill.name }}</span>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar" style="--pct: {{ skill.proficiency }}%"></div>
+        </div>
+        <span class="skill-pct">{{ skill.proficiency }}%</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Frontend -->
+<div class="skills-panel" id="tab-frontend">
+  <div class="skills-grid">
+    {% for skill in frontend %}
+    <div class="skill-card">
+      <div class="skill-icon">{{ skill.icon|default:"🎨" }}</div>
+      <div class="skill-info">
+        <span class="skill-name">{{ skill.name }}</span>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar" style="--pct: {{ skill.proficiency }}%"></div>
+        </div>
+        <span class="skill-pct">{{ skill.proficiency }}%</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Backend -->
+<div class="skills-panel" id="tab-backend">
+  <div class="skills-grid">
+    {% for skill in backend %}
+    <div class="skill-card">
+      <div class="skill-icon">{{ skill.icon|default:"⚙️" }}</div>
+      <div class="skill-info">
+        <span class="skill-name">{{ skill.name }}</span>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar" style="--pct: {{ skill.proficiency }}%"></div>
+        </div>
+        <span class="skill-pct">{{ skill.proficiency }}%</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Database -->
+<div class="skills-panel" id="tab-database">
+  <div class="skills-grid">
+    {% for skill in database %}
+    <div class="skill-card">
+      <div class="skill-icon">{{ skill.icon|default:"🗄️" }}</div>
+      <div class="skill-info">
+        <span class="skill-name">{{ skill.name }}</span>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar" style="--pct: {{ skill.proficiency }}%"></div>
+        </div>
+        <span class="skill-pct">{{ skill.proficiency }}%</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Data Science -->
+<div class="skills-panel" id="tab-datascience">
+  <div class="skills-grid">
+    {% for skill in datascience %}
+    <div class="skill-card">
+      <div class="skill-icon">{{ skill.icon|default:"📊" }}</div>
+      <div class="skill-info">
+        <span class="skill-name">{{ skill.name }}</span>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar" style="--pct: {{ skill.proficiency }}%"></div>
+        </div>
+        <span class="skill-pct">{{ skill.proficiency }}%</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Tools -->
+<div class="skills-panel" id="tab-tools">
+  <div class="skills-grid">
+    {% for skill in tools %}
+    <div class="skill-card">
+      <div class="skill-icon">{{ skill.icon|default:"🛠️" }}</div>
+      <div class="skill-info">
+        <span class="skill-name">{{ skill.name }}</span>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar" style="--pct: {{ skill.proficiency }}%"></div>
+        </div>
+        <span class="skill-pct">{{ skill.proficiency }}%</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<!-- INTERESTS SECTION -->
+<section class="section interests-section">
+  <div class="container">
+    <div class="interests-grid">
+      <div class="interest-card interest-ds">
+        <div class="interest-bg"></div>
+        <div class="interest-icon">📊</div>
+        <h3>Data Science</h3>
+        <p>
+          Uncovering patterns in data, building predictive models, and turning
+          numbers into decisions. I love the intersection of statistics and
+          storytelling.
+        </p>
+        <div class="interest-tags">
+          <span>EDA</span><span>ML Models</span><span>NLP</span
+          ><span>Visualization</span>
+        </div>
+      </div>
+      <div class="interest-card interest-web">
+        <div class="interest-bg"></div>
+        <div class="interest-icon">🌐</div>
+        <h3>Web Development</h3>
+        <p>
+          Designing and building full-stack web applications using Django and
+          modern frontend tools. Focused on clean code, performance, and user
+          experience.
+        </p>
+        <div class="interest-tags">
+          <span>Django</span><span>REST API</span><span>Frontend</span
+          ><span>Deployment</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="section projects-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">My Work</span>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-sub">
+        Some things I've built — more on the projects page
+      </p>
+    </div>
+    <div class="projects-grid">
+      {% for project in featured_projects %}
+      <div class="project-card">
+        <div class="project-thumb">
+          {% if project.image %}
+          <img src="{{ project.image.url }}" alt="{{ project.title }}" />
+          {% else %}
+          <div class="project-thumb-placeholder">
+            {% if project.category == 'data_science' %}📊{% else %}🌐{% endif %}
+          </div>
+          {% endif %}
+          <span class="project-badge">{{ project.get_category_display }}</span>
+        </div>
+        <div class="project-body">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description|truncatechars:120 }}</p>
+          <div class="project-tech">
+            {% for tech in project.tech_stack.split %}
+            <span>{{ tech }}</span>
+            {% endfor %}
+          </div>
+          <div class="project-links">
+            {% if project.github_url %}<a
+              href="{{ project.github_url }}"
+              target="_blank"
+              >GitHub →</a
+            >{% endif %} {% if project.live_url %}<a
+              href="{{ project.live_url }}"
+              target="_blank"
+              class="live-link"
+              >Live Demo ↗</a
+            >{% endif %}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      {% endfor %}
+    </div>
+    <div class="section-cta">
+      <a href="{% url 'projects' %}" class="btn-primary">View All Projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="cta-bg"></div>
+  <div class="container cta-content">
+    <h2>Got a project in mind?</h2>
+    <p>
+      I'm always open to discussing new opportunities, freelance work, or just
+      an interesting chat about data and tech.
+    </p>
+    <a href="{% url 'contact' %}" class="btn-white">Start a Conversation →</a>
+  </div>
+</section>
+
+{% endblock %}

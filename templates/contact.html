@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Contact — Princee
+Portfolio{% endblock %} {% block content %}
+<section class="page-hero">
+  <div class="container">
+    <span class="section-tag">Say Hello</span>
+    <h1 class="page-hero-title">Get In Touch</h1>
+    <p class="page-hero-sub">
+      Have a project idea, question, or just want to connect? I'd love to hear
+      from you.
+    </p>
+  </div>
+</section>
+
+<section class="section contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Let's work together</h2>
+        <p>
+          I'm currently available for freelance projects and full-time
+          opportunities. Whether it's a data science project, web app, or just a
+          chat — reach out!
+        </p>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="cc-icon">📧</div>
+            <div class="cc-body">
+              <h4>Email</h4>
+              <a href="mailto:your@email.com">princeebhingradiya20@email.com</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">📍</div>
+            <div class="cc-body">
+              <h4>Location</h4>
+              <p>Surat, Gujarat, India</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">💼</div>
+            <div class="cc-body">
+              <h4>LinkedIn</h4>
+              <a
+                href="https://linkedin.com/princeebhingradiya-303ba5317"
+                target="_blank"
+                >linkedin.com/in/Princee Bhingradiya</a
+              >
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">🐙</div>
+            <div class="cc-body">
+              <h4>GitHub</h4>
+              <a href="https://github.com/princee2010" target="_blank"
+                >github.com/Princee Bhingradiya</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form method="POST" action="" class="contact-form" novalidate>
+          {% csrf_token %}
+          <div class="form-row">
+            <div class="form-group">
+              <label for="{{ form.name.id_for_label }}">Name</label>
+              {{ form.name }} {% if form.name.errors %}<span class="form-error"
+                >{{ form.name.errors.0 }}</span
+              >{% endif %}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.email.id_for_label }}">Email</label>
+              {{ form.email }} {% if form.email.errors %}<span
+                class="form-error"
+                >{{ form.email.errors.0 }}</span
+              >{% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="{{ form.subject.id_for_label }}">Subject</label>
+            {{ form.subject }} {% if form.subject.errors %}<span
+              class="form-error"
+              >{{ form.subject.errors.0 }}</span
+            >{% endif %}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.message.id_for_label }}">Message</label>
+            {{ form.message }} {% if form.message.errors %}<span
+              class="form-error"
+              >{{ form.message.errors.0 }}</span
+            >{% endif %}
+          </div>
+          <button type="submit" class="btn-primary btn-full">
+            Send Message →
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
